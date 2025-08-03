@@ -10,14 +10,20 @@ public class Contador {
         System.out.print("Digite o segundo número inteiro: ");
         int num2 = scanner.nextInt();
 
-        contar(num1, num2);
+        try {
+            contar(num1, num2);
+        } catch (ParametrosInvalidosException e) {
+            System.out.println(e.getMessage());
+        }
 
         scanner.close();
     }
-    static void contar(int num1, int num2) {
+    public static void contar(int num1, int num2) throws ParametrosInvalidosException {
+        if (num1 > num2) {
+            throw new ParametrosInvalidosException("O segundo número deve ser maior!");
+        }
         for (int i = num1; i <= num2; i++) {
             System.out.println(i);
         }
     }
-
 }
